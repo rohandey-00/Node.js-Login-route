@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Here</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>    
+        
+
+    
+
+    <div>
+        <h1> Enter Your Details </h1> 
+        <form method="post" action="/user/new" id="otpForm">
+            <input placeholder="Enter UserName" type="text" name="username"> <br><br>
+            <input placeholder="Enter email" type="text" name="email"> <br><br>
+            <input placeholder="Enter password" type="text" name="password"> <br><br>
+            
+            <button type="button" id="otpbtn"  class="button-21">Get OTP</button>
+            <br>
+            <p id="otp">Your OTP will appear here.</p> <br>
+            <input placeholder="Enter OTP" type="text" name="otp" id="typeOtp"> <br> <br>
+            <button type="submit" id="submit" class="button-21">Submit</button>
+
+        </form>
+     </div>
+<script>
+
+//function to generate OTP
+function getOtp() {
+      let otp = Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111; // Generate OTP
+      return otp;
+    }
+
+    let data = getOtp(); //call function
+
+    function showOtp(data) {
+      const otpParagraph = document.getElementById('otp'); // Get the paragraph element
+      otpParagraph.textContent = `Your OTP is: ${data}`; // Set the OTP text
+    }
+
+
+    let btn = document.querySelector("#otpbtn");  //button to get otp to display
+    btn.addEventListener("click", () => {
+      setTimeout(() => showOtp(data), 3000); // Show OTP after 3 seconds
+    });
+
+    //CHECK IF USER GAVE THE RIGHT OTP or NOT
+    let form = document.getElementById('otpForm');
+    form.addEventListener("submit", (event) => {
+      let inputOTP = document.getElementById('typeOtp').value;
+      if (inputOTP != data) {
+        event.preventDefault(); // Prevent form submission
+        alert("Invalid OTP");
+      }
+    });
+    
+</script>
+</body>
+</html>

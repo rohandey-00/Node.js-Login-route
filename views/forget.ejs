@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset your password</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div>
+    <h1>Enter your email address:</h1>
+    <form id="otpForm" method="POST" action="/user/forget">
+      <input type="email" required="true" name="email" placeholder="Enter your email here"> <br><br>
+      <button type="button" id="otpbtn" class="button-21">Get OTP</button>  <br><br>
+     
+      <p id="otp">Your OTP will appear here.</p> <br>
+      
+      <input type="number" required="true" name="otp" placeholder="Enter your OTP here" id="typeOtp"> <br><br> <!-- Here we gave the OTP -->
+      <button type="submit" id="submit" class="button-21">Submit</button>  <br><br><br>
+      
+    </form>
+    
+  </div>
+  
+
+
+  <script>
+    function getOtp() {
+      let otp = Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111; // Generate OTP
+      return otp;
+    }
+
+    let data = getOtp(); //call function
+
+    function showOtp(data) {
+      const otpParagraph = document.getElementById('otp'); // Get the paragraph element
+      otpParagraph.textContent = `Your OTP is: ${data}`; // Set the OTP text
+    }
+
+    let btn = document.querySelector("#otpbtn"); //button to get otp to display
+    btn.addEventListener("click", () => {
+      setTimeout(() => showOtp(data), 3000); // Show OTP after 3 seconds
+    });
+
+
+    //CHECK IF USER GAVE THE RIGHT OTP or NOT
+    let form = document.getElementById('otpForm');
+    form.addEventListener("submit", (event) => {
+      let inputOTP = document.getElementById('typeOtp').value;
+      if (inputOTP != data) {
+        event.preventDefault(); // Prevent form submission
+        alert("Invalid OTP");
+      }
+    });
+  </script>
+</body>
+</html>
