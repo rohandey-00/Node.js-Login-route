@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new posts here</title>
+
+    <form method="POST" action='/post/new'> 
+ 
+       <input type="hidden" name="username" value= <%=user.username%>>
+         <br> <br>
+        <textarea  rows="10" cols="45" name="content" placeholder="write your content"></textarea> <br><br>
+        <input type="hidden" name="userId" value= <%=user._id%>>
+        
+        <button>Submit</button>
+
+    </form>   
+</head>
+<body>
+    
+</body>
+</html>

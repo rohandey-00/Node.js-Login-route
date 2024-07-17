@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2>Here All The Posts: </h2> <br><br>
+
+<form method="get" action="/post/<%=id %>/new">
+    <button>Create new Post</button>
+</form>
+
+<% for(let post of posts){ %>
+    <div class="post">
+            <h3>Username : @<%=post.username %></h3>
+            <br>
+            <p> <%= post.content %> </p>
+            <br>
+            <p>Like Count: <span id="count_<%= post._id %>">0</span></p>
+            <hr>
+            <br>
+    
+            
+                <ul>
+                    <% for(com of post.comments){ %>
+                        <li> <%= com %>  </li>
+                    <% }%>
+    
+                </ul>
+            <hr>
+            
+        <form class="commentbtn" method="GET", action="/post/<%=post._id%>/edit">
+                <button>Edit Post</button>
+        </form>         &nbsp; &nbsp; &nbsp;
+
+        <form class="commentbtn" method="POST", action="/post/<%=post._id%>?_method=DELETE">
+            <button>Delete Post</button>
+        </form>         &nbsp; &nbsp; &nbsp;
+
+        <form class="commentbtn" method="GET", action="/comment/<%=post._id%>/new">
+            <button>Add Comment</button>
+        </form>
+
+        &nbsp; &nbsp; &nbsp;
+        <button class="toggle-button" onclick="toggleCount('<%= post._id %>')"> Like </button>
+    </div>
+<% } %>
+
+
+<script>
+ const postLikes = {};
+
+function toggleCount(postId) {
+    if (!postLikes[postId]) {
+        postLikes[postId] = 0;
+    }
+    postLikes[postId]++;
+    document.getElementById('count_' + postId).textContent = postLikes[postId];
+}
+  
+</script>
+    
+    
+</body>
+</html>
+
+
+
+

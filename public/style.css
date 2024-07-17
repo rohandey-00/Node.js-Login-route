@@ -1,6 +1,11 @@
+
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
 body{
  background-color: #E0FFFF;
- display: flex;
+ 
 }
 
 div{
@@ -13,12 +18,16 @@ div{
     background-color: #5F9EA0;
     margin-top: 15px;
 
+    justify-content: center;
+    align-items: center;
+}
 
 
-
-
-    /* justify-content: center;
-    align-items: center; */
+/*Post div*/
+.post{
+  height: auto;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
 }
 
 
@@ -81,4 +90,25 @@ div{
 
 .button-21:focus:not(:active) {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+
+
+
+
+
+/*Styling for comment form*/
+
+.commentbtn{
+  display:inline-block; 
+}
+
+textarea{
+  background-color:#E0FFFF;
+  border: none;
+  border-radius: .4rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+textarea:focus {
+  outline: none;
 }
