@@ -12,9 +12,12 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     otp:{
-        type: Number,
-        
-    }
+        type: Number, 
+    },
+    token:{
+        type: String,
+        default: null,
+    },
 });
 const User = mongoose.model("User", userSchema);
 
